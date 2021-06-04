@@ -3,9 +3,9 @@ head=1
 tail=0
 headCount=0
 tailCount=0
-for ((i=0; i<10; i++))
+while [[ $headCount -lt 22 && $tailCount -lt 22 ]]
 do
-	randomnumber=$((RANDOM%3))
+	randomnumber=$((RANDOM%2))
 	if [ $randomnumber -eq $head ]
 	then
 		((headCount++))
@@ -13,5 +13,16 @@ do
 		((tailCount++))
 	fi
 done
-echo "Number of times Head Won :" $headCount
-echo "Number of times Tail Won :" $tailCount
+if [ $headCount -gt $tailCount ]
+then
+	echo "Head Wins"
+	point=$(($headCount - $tailCount))
+	echo "Head Won by " $point
+elif [ $headCount -lt $tailCount ]
+then
+	echo "Tail Wins"
+	point=$(($tailCount - $headCount))
+	echo "Tail Won by :" $point
+else
+	echo "Head and Tail are in Tie"
+fi
