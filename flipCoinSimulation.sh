@@ -5,7 +5,7 @@ headCount=0
 tailCount=0
 for ((i=0; i<10; i++))
 do
-	randomnumber=$((RANDOM%3))
+	randomnumber=$((RANDOM%2))
 	if [ $randomnumber -eq $head ]
 	then
 		((headCount++))
